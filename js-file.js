@@ -17,9 +17,23 @@ function makeGrid(n) {
       cell.style.width = squareSize + "px";
       cell.style.height = squareSize + "px";
       row.appendChild(cell);
+      
+      container.addEventListener('mousedown', function(event) {
+        if (event.target.classList.contains('gridsquare')) {
+          event.target.classList.add('overcell');
+        }
+      });
+
+      container.addEventListener('mouseover', function(event) {
+        if (event.target.classList.contains('gridsquare') && event.buttons === 1) {
+          event.target.classList.add('overcell');
+        }
+      });
+      
     }
     container.appendChild(row);
   }
 };
-  
-  makeGrid(56);
+
+
+makeGrid(64);
