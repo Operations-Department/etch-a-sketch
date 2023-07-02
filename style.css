@@ -1,8 +1,9 @@
 body {
     font-family: Roboto, sans-serif;
+    background-color: #424242;
   }
   
-  div {
+  #page, #container {
     border: 2px solid red;
   }
   
@@ -15,17 +16,18 @@ body {
   }
   
   #container {
-    height: 30em; 
-    width: 35em;
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    height: 500px; 
+    width: 500px;
+    background-color: white;
+    //overflow: auto;
   }
   
   .row {
-    border: 1px solid black;
     display: flex;
   }
   
-  .column {
-    border: 1px solid blue;
+  .gridsquare {
+    border: 1px solid black;
+    box-sizing: border-box;
   }
+  

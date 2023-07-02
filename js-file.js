@@ -1,19 +1,25 @@
 const page = document.getElementById('page');
 const container = document.getElementById('container');
 
-const rows = 4;
-const columns = 4; 
-
-for (let i = 0; i < rows; i++) {
-  const row = document.createElement('div');
-  row.className = 'row';
+function makeGrid(n) {
+  const containerWidth = container.offsetWidth;
+  const containerHeight = container.offsetHeight;
   
-  for (let j = 0; j < columns; j++) {
-    const column = document.createElement('div');
-    column.className = 'column';
+  const squareSize = Math.floor(Math.min(containerWidth / n, containerHeight / n));
+  
+  for (let rows = 0; rows < n; rows++) {
+    const row = document.createElement("div");
+    row.className = "row";
     
-    row.appendChild(column);
+    for (let columns = 0; columns < n; columns++) {
+      const cell = document.createElement("div");
+      cell.className = "gridsquare";
+      cell.style.width = squareSize + "px";
+      cell.style.height = squareSize + "px";
+      row.appendChild(cell);
+    }
+    container.appendChild(row);
   }
+};
   
-  container.appendChild(row);
-}
+  makeGrid(56);
