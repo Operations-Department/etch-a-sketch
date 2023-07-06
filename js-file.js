@@ -23,15 +23,15 @@ row.className = "row";
 
 //generates columns
 for (let columns = 0; columns < n; columns++) {
-const cell = document.createElement("div");
-cell.className = "gridsquare";
-
-//sets the height and width of each square in pixels
-cell.style.width = squareSize + "px";
-cell.style.height = squareSize + "px";
-
-//adds the div into each row yielding a column
-row.appendChild(cell);
+    const cell = document.createElement("div");
+    cell.className = "gridsquare";
+    
+    //sets the height and width of each square in pixels
+    cell.style.width = squareSize + "px";
+    cell.style.height = squareSize + "px";
+    
+    //adds the div into each row yielding a column
+    row.appendChild(cell);
 }
 //add the rows with cells(columns) inside to the container
 container.appendChild(row);
@@ -63,6 +63,10 @@ container.addEventListener('mouseover', (e) => {
 e.target.style.backgroundColor = colorPicker.value;
 });
 });
+color.classList.add('button-clicked'); //color mode is selected on page load
+container.addEventListener('mouseover', (e) => {
+e.target.style.backgroundColor = colorPicker.value;
+}); //ready to draw on page load
 
 //rainbow mode button - puts a random color in the gridsquare
 rainbowMode.addEventListener('mouseover', () => {
@@ -80,7 +84,7 @@ e.target.style.backgroundColor = randomColor();
 });
 });
 
-//eraser button - erases one gridsquare at a time
+//eraser button - puts white in gridsquare
 eraser.addEventListener('mouseover', () => {
 eraser.classList.add('button-hover');
 });
@@ -104,6 +108,12 @@ clear.addEventListener('mouseout', () => {
 clear.classList.remove('button-hover');
 });
 clear.addEventListener('click', (e) => {
+clear.addEventListener('click', (e) => {
+clear.classList.add('clear-button-clicked');
+setTimeout(function() {
+    clear.classList.remove('clear-button-clicked');
+}, 35);
+});
 const cells = container.querySelectorAll('.gridsquare');
 cells.forEach(function(cell) {
 cell.style.backgroundColor = 'white';
